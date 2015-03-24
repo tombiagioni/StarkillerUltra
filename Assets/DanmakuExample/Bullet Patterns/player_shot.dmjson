@@ -1,0 +1,54 @@
+root:
+{
+    repeatBehaviour: true,
+	behaviour:
+	[
+        {shoot: {speed: 20, variables: {xPos: 0.5}}},                
+        {shoot: {speed: 20, variables: {xPos: -0.5}}},                
+        {wait: {duration: 0.02}},
+
+        {shoot: {speed: 20, variables: {xPos: 2}}},                
+        {shoot: {speed: 20, variables: {xPos: -2}}},                
+        {wait: {duration: 0.07}}
+	]
+},
+
+bullets:
+{
+	Default:
+	{
+		behaviour:
+		[
+    		{shift:{
+    	        x: "$xPos * 0.5",
+    	        position: "relative"
+            }},
+
+    		{shift:{
+    	        x: "$xPos",
+    	        position: "relative",
+    	        duration: 0.2,
+    	        interpolation: "easeOutSine",
+                wait: true
+            }},
+
+    		{shift:{
+    	        x: "$xPos * -3",
+    	        position: "relative",
+    	        duration: 0.4,
+    	        interpolation: "easeInOutSine",
+                wait: true
+            }},
+
+    		{shift:{
+    	        x: "$xPos * 3",
+    	        position: "relative",
+    	        duration: 0.3,
+    	        interpolation: "easeInOutSine",
+                wait: true
+            }}
+
+		]
+	}
+}
+

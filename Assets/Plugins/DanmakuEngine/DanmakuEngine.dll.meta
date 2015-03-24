@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 47e57f052c1b8489ea47bee7afd90254
+MonoAssemblyImporter:
+  serializedVersion: 1
+  iconMap: {}
+  executionOrder:
+    VirtualDropkick.DanmakuEngine.Unity.DanmakuController: -100
+    VirtualDropkick.DanmakuEngine.Unity.DanmakuOrigin: -50
+  userData: 

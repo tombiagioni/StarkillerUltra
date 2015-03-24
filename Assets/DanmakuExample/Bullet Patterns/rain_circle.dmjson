@@ -1,0 +1,72 @@
+properties: {displayName: "Rain Circle"},
+
+root:
+{
+    repeatBehaviour: true,
+    behaviour:
+    [
+        {repeat: {times: 10, actions: [
+            {call: {procedure: "rainCircle",
+                    params: {
+                        circles: "15 + (7 * #rank)",
+                        bulletsPerCircle: "36 + (6 * #rank)"
+                    }
+            }},
+            {wait: {duration: 2}},
+        ]}}
+    ]
+},
+
+procedures:
+{
+    rainCircle:
+    [
+        {set: {var: "direction", to: 1}},
+
+        {repeat: {times: "$circles", actions:
+        [
+            {call: {procedure: "fireCircle",
+                    params: {bullets: "$bulletsPerCircle",
+                             angle: 0,
+                             direction: "$direction"}
+            }},    
+            
+            {rotate: {angle: 30}},
+            {set: {var: "direction", to: "-$direction"}}
+
+            {wait: {duration: "0.7 - (#rank * 0.4)"}}
+        ]}}
+    ],
+    
+    fireCircle:
+    [
+        {repeat: {times: "$bullets", actions:
+        [
+            {shoot: {bullet: "snakeLine",
+                     angle: "$angle",
+                     variables: {direction: "$direction"}}},
+                     
+            {set: {var: "angle", to: "$angle + (360 / $bullets)"}}
+        ]}}
+    ]
+},
+
+bullets:
+{
+    snakeLine:
+    {
+        properties: {preset: "Beam"},
+        speed : 3,
+        behaviour:
+        [
+            {changeSpeed: {speed: 1, duration: 1, wait: true}},
+            {rotate: {angle: "$direction * 120", duration: 1}},    
+            {changeSpeed: {speed: 4, duration: 1, wait: true}},
+            {rotate: {angle: "-$direction * 180", duration: 1}},    
+            {wait: {duration: 6}},            
+            
+            destroy
+        ]
+    }
+}
+

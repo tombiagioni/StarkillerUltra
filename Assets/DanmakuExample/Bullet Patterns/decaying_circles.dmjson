@@ -1,0 +1,74 @@
+properties: {displayName: "Decaying Circles"}
+
+root:
+{
+    repeatBehaviour: true,
+    behaviour:
+    [
+        {call: {procedure: "fireCircle",
+            params: {speed: 8, bullets: 18, angle: 180}
+        }},
+        {rotate: {angle: 10}},        
+        {wait: {duration: 0.3}},
+        
+        {call: {procedure: "fireCircle",
+            params: {speed: 14, bullets: 24, angle: 180}
+        }},
+        {rotate: {angle: 10}},        
+        {wait: {duration: 0.3}},
+        
+        {call: {procedure: "fireCircle",
+            params: {speed: 20, bullets: 30, angle: 180}
+        }},
+        {rotate: {angle: 10}},        
+        {wait: {duration: 1.5}}
+    ]
+},
+
+procedures:
+{
+    fireCircle:
+    [
+        {set: {var: "moveAngle", to: "360 * #random"}},
+        {set: {var: "rotateAngle", to: "-135 + (270 * #random)"}},
+            
+        {repeat: {times: "$bullets", actions:
+        [
+            {shoot: {
+                angle: "$angle",
+                speed: "$speed",
+                variables: {moveAngle: "$moveAngle"}
+            }},
+            
+            {set: {var: "angle", to: "$angle + (360 / $bullets)"}}
+        ]}}
+    ]
+},
+
+bullets:
+{
+    Default:
+    {
+        speed : 4,
+        behaviour:
+        [
+            {changeSpeed: {speed: 0, duration: 0.3, wait: true}},        
+            {rotate: {angle: "$moveAngle", relation: "absolute"}},
+            {changeSpeed: {speed: 3, duration: 2.5, wait: true}},    
+            {shoot: {bullet: "Beam"}},
+            
+            destroy
+        ]
+    },
+
+    Beam:
+    {
+        speed : 1,
+        behaviour:
+        [
+            {rotate: {angle: "180 - (360 * #random)",  duration: 0.4}},
+            {changeSpeed: {speed: "3 + (3 * #rank)", duration: 1}}
+        ]
+    }
+}
+

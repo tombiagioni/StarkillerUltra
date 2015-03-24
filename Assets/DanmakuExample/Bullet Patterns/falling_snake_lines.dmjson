@@ -1,0 +1,88 @@
+properties: {displayName: "Falling Snake Lines"}
+
+root:
+{
+    repeatBehaviour: true,
+    behaviour:
+    [
+        {set: {var:"direction", to: 1}},
+    
+        {set: {var:"xPos", to: 0.5}},
+        {set: {var:"yPos", to: 1}},
+        
+        {repeat: {times: 20, actions:
+        [
+            {shoot: {angle: 180,
+                     variables: {xPos: "$xPos",
+                                 yPos: "$direction * $yPos"}}},
+                                 
+            {shoot: {angle: 180,
+                     variables: {xPos: "-$xPos",
+                                 yPos: "$direction * $yPos"}}},
+                                 
+            {wait: {duration: 0.1}},
+            
+            {set: {var:"xPos", to: "$xPos + 0.3"}},
+            {set: {var:"yPos", to: "$yPos + 0.1"}}
+        ]}},
+        
+        {wait: {duration: "0.6 - (0.5 * #rank)"}},
+        {set: {var: "direction", to: "-$direction"}}
+    ]
+},
+
+bullets:
+{
+    Default:
+    {
+        speed : 3,
+        behaviour:
+        [
+            {changeSpeed: {speed: 0}},
+            
+            {shift:{
+                y: "$yPos",
+                position: "relative",
+                duration: 1,
+                interpolation: "easeOutSine"
+            }}
+            {wait: {duration: 0.5}},
+            
+            {shift:{
+                x: "$xPos",
+                position: "relative",
+                duration: 1,
+                interpolation: "easeInOutSine",
+                wait: true
+            }}
+            
+            {changeSpeed: {speed: 4, duration: 1}},
+            
+            {shift:{
+                x: -2,
+                position: "relative",
+                duration: 1,
+                interpolation: "easeInOutSine",
+                wait: true
+            }},
+            {shift:{
+                x: 2,
+                position: "relative",
+                duration: 0.5,
+                interpolation: "easeInOutSine",
+                wait: true
+            }},
+            {shoot: {bullet: "Beam", speed: "3 + (#rank * 4)"}},
+            destroy
+        ]
+    },
+
+    Beam:
+    {
+        behaviour:
+        [
+            {rotate: {angle: "360 * #random", relation: "absolute", duration: 0.5}
+        ]
+    }
+}
+

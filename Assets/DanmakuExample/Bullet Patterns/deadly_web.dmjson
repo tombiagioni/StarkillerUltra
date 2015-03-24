@@ -1,0 +1,52 @@
+properties: {displayName: "Deadly Web"},
+
+root:
+{
+    repeatBehaviour: true,
+    behaviour:
+    [
+        {set: {var: "angle", to: -95}},
+        {set: {var: "emitters", to: "6 + (4 * #rank)"}},
+
+        {repeat: {times: "$emitters", actions:
+        [
+            {shoot: {emitter: "Cross", angle: "$angle", speed: 5.5}},
+            {set: {var: "angle", to: "$angle + (360 / $emitters)"}},
+            {wait: {duration: 0.2}}
+        ]}},
+        
+        {rotate: {angle: 45}},
+        {wait: {duration: 6}}
+    ]
+},
+
+emitters:
+{
+    Cross:
+    {
+        behaviour:
+        [
+            {wait: {duration: 0.5}},
+            {changeSpeed: {speed: 0}},
+            
+            {repeat: {times: "50", actions:
+            [
+                {shoot: {bullet: "Beam", speed: 8, angle: 15}},
+                {shoot: {bullet: "Beam", speed: 8, angle: 105}},
+                {shoot: {bullet: "Beam", speed: 8, angle: 195}},
+                {shoot: {bullet: "Beam", speed: 8, angle: 285}},
+                
+                {rotate: {angle: 0.5}},
+                {wait: {duration: 0.1}}
+            ]}},
+            
+            destroy
+        ]
+    }
+},
+
+bullets:
+{
+    Beam: { }
+}
+

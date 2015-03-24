@@ -1,0 +1,87 @@
+properties: {displayName: "Homing Circles"},
+
+root:
+{
+    behaviour:
+    [
+        {repeat: {times: 200, actions:
+        [
+            {call: {procedure: "fireCircleA",
+                    params: {bullets: 18, angle: 180}}},
+                    
+            {rotate: {angle: 10}},        
+            {wait: {duration: "1.5 - (1 * #rank)"}},
+            
+            {call: {procedure: "fireCircleB",
+                    params: {bullets: 18, angle: 180}}},
+                    
+            {rotate: {angle: 10}},        
+            {wait: {duration: "1.5 - (1 * #rank)"}}
+            
+        ]}}
+    ]
+},
+
+procedures:
+{
+    fireCircleA:
+    [
+        {repeat: {times: "$bullets", actions:
+        [
+            {shoot: {bullet: "followClosest",
+                     angle: "$angle",
+                     speed: 4}},
+                     
+            {set: {var: "angle", to: "$angle + (360 / $bullets)"}}
+        ]}}
+    ],
+    fireCircleB:
+    [
+        {repeat: {times: "$bullets", actions:
+        [
+            {shoot: {bullet: "followFarthest",
+                     angle: "$angle",
+                     speed: 4}},
+                     
+            {set: {var: "angle", to: "$angle + (360 / $bullets)"}}
+        ]}}
+    ]
+},
+
+bullets:
+{
+    followClosest:
+    {
+        speed : 3,
+        properties: {preset: "Beam"},
+        behaviour:
+        [
+            {changeSpeed: {speed:  0, duration:   1, wait: true}},        
+            {changeSpeed: {speed: -3, duration: 0.2, wait: true}},        
+            {changeSpeed: {speed:  2, duration: 0.2, wait: true}}        
+            {changeSpeed: {speed: -1, duration: 0.2, wait: true}},        
+            {changeSpeed: {speed:  0, duration: 0.2, wait: true}},        
+            {changeSpeed: {speed:  6, duration: 1}},
+                    
+            {aim: {target: "closest", duration: 1}}
+        ]
+    },
+    
+    followFarthest:
+    {
+        speed : 3,
+        properties: {preset: "Beam"},
+        behaviour:
+        [
+            {changeSpeed: {speed:  0, duration:   1, wait: true}},        
+            {changeSpeed: {speed: -6, duration: 0.2, wait: true}},        
+            {changeSpeed: {speed:  2, duration: 0.2, wait: true}}        
+            {changeSpeed: {speed: -1, duration: 0.2, wait: true}},        
+            {changeSpeed: {speed:  0, duration: 0.2, wait: true}},        
+            {changeSpeed: {speed:  6, duration: 1}},
+                    
+            {aim: {target: "farthest", duration: 1}}
+        ]
+    }
+}
+

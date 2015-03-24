@@ -1,0 +1,49 @@
+properties: {displayName: "Spinning Flower"}
+
+root:
+{
+    repeatBehaviour: true,
+    behaviour:
+    [
+        {set: {var: "angle", to: "$angle + 6"}},
+        {set: {var: "bullets", to: "8 + (10 * #rank)"}},
+
+        {repeat: {times: "$bullets", actions: [
+            {shoot: {bullet: "Beam",
+                       angle: "$angle",
+                       angleOffset: "360 / $bullets",
+                       angleRelation: "cumulative"}}
+
+        ]}},
+
+        {repeat: {times: "$bullets", actions: [
+            {shoot: {angle: "-$angle",
+                       angleOffset: "360 / $bullets",
+                       angleRelation: "cumulative"}}
+
+        ]}},
+
+        {wait: {duration: 0.14}}
+    ]
+},
+
+bullets:
+{
+    Default:
+    {
+        speed: 6,
+        behaviour:
+        [
+            # Put your bullet-behaviour here...
+        ]
+    },
+
+    Beam:
+    {
+        speed: 9,
+        behaviour:
+        [
+            # Put your bullet-behaviour here...
+        ]
+    }
+}
