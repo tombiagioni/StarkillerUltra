@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 
 Project("{61B032F1-7897-D9E7-E195-013518DCC0F5}") = "StarKillerUltra", "Assembly-CSharp-vs.csproj", "{D2E27874-5344-785F-88EE-717C35C48F5D}"
 EndProject
-Project("{61B032F1-7897-D9E7-E195-013518DCC0F5}") = "StarKillerUltra", "Assembly-CSharp-Editor-vs.csproj", "{AF961B7B-BDBD-BDFB-849B-62316374698A}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,15 +13,11 @@ Global
 		{D2E27874-5344-785F-88EE-717C35C48F5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D2E27874-5344-785F-88EE-717C35C48F5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D2E27874-5344-785F-88EE-717C35C48F5D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AF961B7B-BDBD-BDFB-849B-62316374698A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AF961B7B-BDBD-BDFB-849B-62316374698A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AF961B7B-BDBD-BDFB-849B-62316374698A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AF961B7B-BDBD-BDFB-849B-62316374698A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-								GlobalSection(MonoDevelopProperties) = preSolution
+											GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1

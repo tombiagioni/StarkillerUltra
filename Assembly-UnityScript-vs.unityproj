@@ -49,16 +49,14 @@
      <Compile Include="Assets\80s Shoot&apos;em Up Kit\Scripts\Utilities\FramesPerSecond.js" />
      <Compile Include="Assets\80s Shoot&apos;em Up Kit\Scripts\Utilities\GridScript.js" />
      <None Include="Assets\README.txt" />
-     <None Include="Assets\Spacebox-4096-Nebula-Collision\readme.txt" />
      <None Include="Assets\80s Shoot&apos;em Up Kit\READMEFIRST - CSharp Version usage notice.txt" />
-     <None Include="Assets\JStoC\readme.txt" />
      <None Include="Assets\READMEFIRST (CSharp Version).txt" />
      <None Include="Assets\Plugins\DanmakuEngine\Shaders\VDK-Sprites-Pulsating-AdditiveTint.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="DanmakuEngine">
- <HintPath>D:/Users/tombi_000/Documents/StarKillerUltra/Assets/Plugins/DanmakuEngine/DanmakuEngine.dll</HintPath>
+ <HintPath>D:/GitHUb/StarKillerUltra/Assets/Plugins/DanmakuEngine/DanmakuEngine.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
