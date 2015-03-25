@@ -568,7 +568,7 @@ public class MainScript:MonoBehaviour
 		
 		toggleGiveCoinsPrevious = toggleGiveCoins;
 		
-		// Make the first toggle. If it is pressed, "giveCoins" player preference value will be changed
+		// Make the first toggle. If it is pressed, "GiveCoins" player preference value will be changed
 		toggleGiveCoins = GUI.Toggle (new Rect (40.0f,(float)(Screen.height-30),80.0f,20.0f),toggleGiveCoins, "Give coins");
 		{	
 			if (toggleGiveCoins != toggleGiveCoinsPrevious)

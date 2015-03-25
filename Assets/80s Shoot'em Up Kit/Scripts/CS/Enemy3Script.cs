@@ -137,7 +137,7 @@ public class Enemy3Script:MonoBehaviour
 			explosionClone = explosionPool.Spawn();
 			explosionClone.transform.position = myTr.position;
 			
-			// search for "giveCoins" value in player preferences
+			// search for "GiveCoins" value in player preferences
 			if (PlayerPrefs.HasKey("Give coins") == false || PlayerPrefs.GetInt("Give coins") == 1) giveCoins = false; // we use the value 2 for true, and one for false
 			else if (PlayerPrefs.GetInt("Give coins") == 2) giveCoins = true;
 			

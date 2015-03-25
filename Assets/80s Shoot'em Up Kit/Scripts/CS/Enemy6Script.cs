@@ -337,7 +337,7 @@ public class Enemy6Script:MonoBehaviour
 			tmpColor.a = 0.0f;
 			mySpriteRdr.color = tmpColor;
 			
-			// search for "giveCoins" value in player preferences
+			// search for "GiveCoins" value in player preferences
 			if (PlayerPrefs.HasKey("Give coins") == false || PlayerPrefs.GetInt("Give coins") == 1) giveCoins = false; // we use the value 2 for true, and one for false
 			else if (PlayerPrefs.GetInt("Give coins") == 2) giveCoins = true;
 			
