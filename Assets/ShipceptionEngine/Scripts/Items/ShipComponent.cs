@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace Shipception
 {
-    enum ComponentType
+    public enum ComponentType
     {
         Engine = 1,
         Wings,
@@ -15,7 +15,7 @@ namespace Shipception
         Bomb
     }
 
-    enum ComponentTier
+    public enum ComponentTier
     {
         Common = 1,
         Uncommon,
@@ -23,7 +23,7 @@ namespace Shipception
         Unique
     }
 
-    enum ComponentScaleTier
+    public enum ComponentScaleTier
     {
         Fighter = 1,
         Destroyer,
@@ -38,16 +38,20 @@ namespace Shipception
         public float DefenseBuff;
         public float VitalityBuff;
 
-        // Use this for initialization
-        private void Start()
-        {
 
+        public ComponentType Type;
+        public ComponentTier Tier;
+        public ComponentScaleTier ScaleTier;
+
+        public override void Start()
+        {
+            base.Start();
         }
 
-        // Update is called once per frame
-        private void Update()
+        public override void Update()
         {
-
+            base.Update();
         }
+
     }
 }
