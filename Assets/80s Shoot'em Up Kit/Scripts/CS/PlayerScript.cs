@@ -212,11 +212,11 @@ public class PlayerScript:MonoBehaviour
 			// Update position (constrained to limits)
 			if (myTr.position.y < camTr.position.y + screenLimitsMax.y)
 			/*
-            {
+			{
 				var tmpPos = myTr.localPosition;
 				tmpPos.y = myTr.localPosition.y + speed * Time.deltaTime;
 				myTr.localPosition = tmpPos;
-            }
+			}
 			*/
 			myTr.localPosition = new Vector3 (myTr.localPosition.x, myTr.localPosition.y + speed * Time.deltaTime, myTr.localPosition.z);
 
@@ -235,12 +235,12 @@ public class PlayerScript:MonoBehaviour
 			// Update position (constrained to limits)
 			if (myTr.position.y > camTr.position.y + screenLimitsMin.y)
 			/*
-            {
+			{
 				var tmpPos = myTr.localPosition;
 				tmpPos.y = myTr.localPosition.y - speed * Time.deltaTime;
 				myTr.localPosition = tmpPos;
-            }
-            */
+			}
+			*/
 			myTr.localPosition = new Vector3 (myTr.localPosition.x, myTr.localPosition.y - speed * Time.deltaTime, myTr.localPosition.z);
 		}
 		
@@ -265,12 +265,12 @@ public class PlayerScript:MonoBehaviour
 
 				// Take into account the camera horizontal scrolling !
 				if (camScrollEnabled == true) 
-                {
+				{
 
 					var tmpPos = myTr.position;
 					tmpPos.x = myTr.position.x - camScrollSpeedX * Time.deltaTime;
 					myTr.position = tmpPos;
-                }
+				}
 			}
 
 		}
@@ -284,14 +284,14 @@ public class PlayerScript:MonoBehaviour
 			// Update position (constrained to limits)
 			if (myTr.position.x < camTr.position.x+screenLimitsMax.x)
 			
-            {
+			{
 				/*
 				var tmpPos = myTr.localPosition;
 				tmpPos.x = myTr.localPosition.x + speed * Time.deltaTime;
 				myTr.localPosition = tmpPos;
 				*/
 				myTr.localPosition = new Vector3 (myTr.localPosition.x + speed * Time.deltaTime, myTr.localPosition.y, myTr.localPosition.z);
-            }	
+			}	
 		}
 		
 		// "Fire1" button = simple fire ('left ctrl' by default on InputManager settings), "Fire2" button = auto-fire ('left alt' by default on InputManager settings)

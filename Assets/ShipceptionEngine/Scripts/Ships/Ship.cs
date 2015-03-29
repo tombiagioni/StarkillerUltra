@@ -24,12 +24,23 @@ public class Ship : MonoBehaviour {
         protected Transform _myTr;
         protected SpriteRenderer _mySpriteRdr;
 
+        // Player exhaust cached components :
+        GameObject myExhaustGo;		// Target exhaust's gameObject
+        Transform myExhaustTr;		// Target exhaust's transform
+
+        // Limits player's position relative to camera position :
+        public Vector2 ScreenLimitsMin;
+        public Vector2 ScreenLimitsMax;
+
         bool _asleep = true;
 
         // Sprite references :
         public Sprite GoForward;
         public Sprite GoUp;
         public Sprite GoDown;
+
+        public Sprite MoveLeft;
+        public Sprite MoveRight;
 
         // the base position used for Y movement
         private float _basePosY;
@@ -50,6 +61,14 @@ public class Ship : MonoBehaviour {
         public bool GiveUpgrade = false;
         ObjectPoolerScript _upgradePool;
         public Color UpgradeHolderColor = Color.yellow;
+
+
+    //Break this out into the Weapon Class
+        // Ship speed and weapon level
+        public int SpeedLevel = 1;
+        public int SpeedLevelMax = 6;
+        public int WeaponLevel = 1;
+        public int WeaponLevelMax = 3;
 
 
 
