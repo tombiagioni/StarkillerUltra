@@ -3,6 +3,15 @@ using System.Collections;
 
 namespace Shipception
 {
+
+    enum ShipScaleTier
+    {
+        Fighter = 1,
+        Destroyer,
+        Carrier,
+        BattleCruiser,
+        Dreadnought
+    }
 public class Ship : MonoBehaviour {
 
 

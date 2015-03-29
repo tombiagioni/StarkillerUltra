@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace Shipception
 {
-    enum MyEnum
+    enum ComponentType
     {
         Engine = 1,
         Wings,
@@ -13,6 +13,23 @@ namespace Shipception
         Orbital,
         Missile,
         Bomb
+    }
+
+    enum ComponentTier
+    {
+        Common = 1,
+        Uncommon,
+        Rare,
+        Unique
+    }
+
+    enum ComponentScaleTier
+    {
+        Fighter = 1,
+        Destroyer,
+        Carrier,
+        BattleCruiser,
+        Dreadnought
     }
     public class ShipComponent : Item
     {
