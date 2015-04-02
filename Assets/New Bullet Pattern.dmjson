@@ -1,0 +1,69 @@
+properties: {displayName: "Rain Vortex"},
+
+root:
+{
+    behaviour:
+    [
+        {repeat: {times: 200, actions:
+        [
+            {call: {procedure: "vortex",
+                params: {repetitions: 10}
+            }},
+            {wait: {duration: 2}}
+        ]}}
+    ]
+},
+
+procedures:
+{   
+    vortex:
+    [
+        {set: {var: "sign", to: 1}},
+        
+        {repeat: {times: "$repetitions", actions:
+        [
+            {repeat: {times: 10, actions:
+            [
+                {call: {procedure: "fireCircle",
+                        params: {bullets: "15 + (8 * #rank)", angle: 0}
+                }},    
+                
+                {rotate: {angle: "$sign * 20"}},
+
+                {wait: {duration: 0.1}}
+            ]}},
+            
+            {set: {var: "sign", to: "-$sign"}}
+        ]}}
+    ],
+    
+    fireCircle:
+    [
+        {repeat: {times: "$bullets", actions:
+        [
+            {shoot: {bullet: "snakeLine", angle: "$angle"}},
+            {set: {var: "angle", to: "$angle + (360 / $bullets)"}}
+        ]}}
+    ]
+},
+
+bullets:
+{
+    snakeLine:
+    {
+        properties: {preset: "Beam"},
+        speed : 3,
+        behaviour:
+        [
+            {changeSpeed: {speed: 1, duration: 1, wait: true}},
+            {rotate: {angle: 120, duration: 1}},    
+            {changeSpeed: {speed: 4, duration: 1, wait: true}},
+            {rotate: {angle: -160, duration: 1, wait: true}},    
+            {rotate: {angle: 90, duration: 1, wait: true}},    
+            {wait: {duration: 6}},            
+            
+            destroy
+        ]
+    }
+}
+
