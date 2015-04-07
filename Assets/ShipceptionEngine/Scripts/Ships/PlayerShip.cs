@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace Shipception
 {
-    public class PlayerShip : Ship
+    public class PlayerShip : MonoBehaviour
     {
 
         public ShipComponent Wings;
@@ -11,21 +11,38 @@ namespace Shipception
         public ShipComponent Engine;
         public ShipComponent Cockpit;
 
-        public float AttackBase;
-        public float SpeedBase;
-        public float DefenseBase;
-        public float VitalityBase;
+        // Sprite references :
+        public Sprite playerStand;
+        public Sprite playerUp;
+        public Sprite playerDown;
 
-        // Use this for initialization
-        private void Start()
-        {
 
-        }
+        /// <summary>
+        /// 1 - The speed of the ship
+        /// </summary>
+        public Vector2 speed = new Vector2(50, 50);
 
-        // Update is called once per frame
+        // 2 - Store the movement
+        private Vector2 movement;
+
         private void Update()
         {
+            // 3 - Retrieve axis information
+            float inputX = Input.GetAxis("Horizontal");
+            float inputY = Input.GetAxis("Vertical");
+
+            // 4 - Movement per direction
+            movement = new Vector2(
+                speed.x*inputX,
+                speed.y*inputY);
 
         }
+
+        private void FixedUpdate()
+        {
+            // 5 - Move the game object
+            rigidbody2D.velocity = movement;
+        }
+
     }
 }

@@ -71,6 +71,7 @@
      <None Include="Assets\Plugins\BulletML-Unity\Demo\Resources\patterns\example_homing.xml" />
      <None Include="Assets\Plugins\BulletML-Unity\Demo\Resources\patterns\[Daiouzyou]_round_4_boss_5.xml" />
      <None Include="Assets\Plugins\BulletML-Unity\Demo\Resources\patterns\[Original]_accusation.xml" />
+     <None Include="Assets\Plugins\BulletML-Unity\Demo\Resources\patterns\testScripts.xml" />
      <None Include="Assets\Plugins\BulletML-Unity\Demo\Resources\patterns\[Original]_btb_1.xml" />
      <None Include="Assets\PlayMaker\Readme.txt" />
      <None Include="Assets\Plugins\BulletML-Unity\Demo\Resources\patterns\[ESP_RADE]_round_123_boss_izuna_fan.xml" />
@@ -301,6 +302,7 @@
      <None Include="Assets\Plugins\BulletML-Unity\Demo\Resources\patterns\[STORM_CALIBAR]_last_boss_double_roll_bullets.xml" />
      <None Include="Assets\Plugins\BulletML-Unity\Demo\Resources\patterns\[OtakuTwo]_dis_bee_2.xml" />
      <None Include="Assets\Plugins\BulletML-Unity\Demo\Resources\patterns\[Original]_dokkaan.xml" />
+     <None Include="Assets\Plugins\BulletML-Unity\Demo\Resources\patterns\SingleFire.xml" />
      <None Include="Assets\Plugins\BulletML-Unity\Demo\Resources\patterns\[OtakuTwo]_restriction_stasis.xml" />
      <None Include="Assets\Plugins\BulletML-Unity\Demo\Resources\patterns\[Original]_backfire.xml" />
      <None Include="Assets\Plugins\NGUI\Examples\Models\Orc Armor\Orc Armor.shader" />
@@ -318,15 +320,19 @@
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>
  </Reference>
+ <Reference Include="PlayMaker">
+ <HintPath>D:/GitHUb/StarKillerUltra/Assets/PlayMaker/PlayMaker.dll</HintPath>
+ </Reference>
  <Reference Include="Equationator">
  <HintPath>D:/GitHUb/StarKillerUltra/Assets/Plugins/BulletML-Unity/Plugins/BulletMLLib/externals/Equationator.dll</HintPath>
  </Reference>
  <Reference Include="DanmakuEngine">
  <HintPath>D:/GitHUb/StarKillerUltra/Assets/Plugins/DanmakuEngine/DanmakuEngine.dll</HintPath>
  </Reference>
- <Reference Include="PlayMaker">
- <HintPath>D:/GitHUb/StarKillerUltra/Assets/PlayMaker/PlayMaker.dll</HintPath>
- </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass-vs.csproj">
+      <Project>{111DAF49-B85B-BC43-184A-E6ED2B051692}</Project>      <Name>Assembly-CSharp-firstpass-vs</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -21,8 +21,10 @@ public class Ship : MonoBehaviour {
 
 
 
-        [HideInInspector] bool gamePause;	// Is the game paused ? (sent by "MainScript()")
-        
+        [HideInInspector] public bool gamePause;
+        public bool canShoot;// Is the game paused ? (sent by "MainScript()")
+        [HideInInspector]
+        public bool canMove = true;
         //base values
         public int Health;
         public int ScoreValue = 100;
@@ -54,23 +56,6 @@ public class Ship : MonoBehaviour {
         // the base position used for Y movement
         private float _basePosY;
 
-        //Explosion
-        private ObjectPoolerScript _explosionPool;
-        GameObject _explosionClone;	// value to cache spawned object
-
-        // Coins :
-        public bool GiveCoins = true;
-        //var coin : GameObject;
-        ObjectPoolerScript _coinPool;
-        GameObject _coinClone;
-        Vector3 _coinPos;
-        int i;
-
-        // Upgrade :
-        public bool GiveUpgrade = false;
-        ObjectPoolerScript _upgradePool;
-        public Color UpgradeHolderColor = Color.yellow;
-
 
     //Break this out into the Weapon Class
         // Ship speed and weapon level
@@ -78,6 +63,11 @@ public class Ship : MonoBehaviour {
         public int SpeedLevelMax = 6;
         public int WeaponLevel = 1;
         public int WeaponLevelMax = 3;
+
+        public float AttackBase;
+        public float SpeedBase;
+        public float DefenseBase;
+        public float VitalityBase;
 
 
 
@@ -130,9 +120,9 @@ public class Ship : MonoBehaviour {
             _myTr = transform;
             _mySpriteRdr = _myTr.GetComponent<SpriteRenderer>();
 
-            _explosionPool = GameObject.Find("ObjectPool ShipExplosions").GetComponent<ObjectPoolerScript>();
-            _coinPool = GameObject.Find("ObjectPool ItemCoins").GetComponent<ObjectPoolerScript>();
-            _upgradePool = GameObject.Find("ObjectPool ItemUpgrades").GetComponent<ObjectPoolerScript>(); 
+            //_explosionPool = GameObject.Find("ObjectPool ShipExplosions").GetComponent<ObjectPoolerScript>();
+            //_coinPool = GameObject.Find("ObjectPool ItemCoins").GetComponent<ObjectPoolerScript>();
+            //_upgradePool = GameObject.Find("ObjectPool ItemUpgrades").GetComponent<ObjectPoolerScript>(); 
             
 
 
@@ -181,43 +171,7 @@ public class Ship : MonoBehaviour {
                 audio.Play();
                 _myTr.collider2D.enabled = false;
                 _myTr.renderer.enabled = false;
-                //REGULAR METHOD : INSTANTIATE (unoptimised)
-                //explosionClone = Instantiate(explosion, Vector3 (myTr.position.x, myTr.position.y, myTr.position.z), Quaternion.identity);
 
-                // Pooling Method : grab object from "ObjectPooler"'s gameObjects list
-                _explosionClone = _explosionPool.Spawn();
-                _explosionClone.transform.position = _myTr.position;
-
-                // search for "GiveCoins" value in player preferences
-                if (PlayerPrefs.HasKey("Give coins") == false || PlayerPrefs.GetInt("Give coins") == 1) GiveCoins = false; // we use the value 2 for true, and one for false
-                else if (PlayerPrefs.GetInt("Give coins") == 2) GiveCoins = true;
-
-                if (GiveCoins == true)
-                {
-                    _coinPos = _myTr.position;
-
-                    for (i = 0; i < ScoreValue / 10; i++)
-                    {
-                        //REGULAR METHOD : INSTANTIATE (unoptimised)
-                        //coinClone = Instantiate(coin, coinPos, Quaternion.identity);
-
-                        // Pooling Method : grab object from "ObjectPooler"'s gameObjects list
-                        _coinClone = _coinPool.Spawn();
-                        _coinClone.transform.position = _coinPos;
-
-                        yield return null;
-                    }
-                }
-
-                if (GiveUpgrade == true)
-                {
-                    GameObject upgradeClone = _upgradePool.Spawn();
-                    upgradeClone.transform.position = _myTr.position;
-                }
-
-                //playerScript.UpdateScore(scoreValue);
-                StartCoroutine(DestroyObject());
-                StartCoroutine(DestroyObject());
             }
 
         }

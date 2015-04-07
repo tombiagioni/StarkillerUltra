@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE bulletml SYSTEM "bulletml.dtd">
+
+<bulletml type="horizontal" xmlns="http://www.asahi-net.or.jp/~cs8k-cyu/bulletml">
+
+  <action label="top">
+    <repeat>
+      <!-- Main Loop -->
+      <times>99999</times>
+      
+      <action>
+        <actionRef label="pattern" />
+        <wait>20</wait>
+      </action>
+      
+    </repeat>
+  </action>
+
+  <action label="pattern">
+    <trigger>attack</trigger>
+    <actionRef label="shoot">
+      <param>180</param>
+    </actionRef>
+
+  </action>
+
+  <action label="shoot">
+    <fire>
+
+      <direction type="absolute">$1</direction>
+      <bullet label="bullet_normal">
+        <speed>3</speed>
+        <action>
+          <wait>1</wait>
+          <changeSpeed>
+            <speed>2.030 + 2.20 * $rank</speed>
+            <term>10</term>
+          </changeSpeed>
+        </action>
+      </bullet>
+
+    </fire>
+  </action>
+  
+</bulletml>
+
+
